@@ -13,17 +13,6 @@ const input = ref(null)
 const keyword = ref('')
 const searchResult = ref([])
 
-const handleClickOutsideModal = (event) => {
-    // console.log(event.target.classList.contains('myModal'));
-    // if(!event.target.classList.contains('myModal')) {
-    //     modal.value.classList.add('hidden')
-    //     emit('showDialog', false)
-    //     console.log('tutup modal');
-    // } else {
-    //     console.log('jangan tutup');
-    // }
-}
-
 watch(keyword, async (newValue, oldValue) => {
     if(newValue.length > 0) {
         try {

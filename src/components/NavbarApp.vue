@@ -1,14 +1,19 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { onMounted, onBeforeMount, ref } from 'vue'
-import Modal from './Modal.vue';
+import SearchModal from './SearchModal.vue';
 
 const navbarBackground = ref('bg-transparent')
+const navActive = ref(false)
 const showDialog = ref(false)
 
 const handleModal = (val) => {
   showDialog.value = val
 }
+const toggleNav = () => {
+  navActive.value = !navActive.value
+}
+
 const scrollEventHandler = (event) => {
     if (window.scrollY > 200) {
         navbarBackground.value = 'bg-base-300'
@@ -27,15 +32,16 @@ onMounted(() => {
   <nav class="navbar lg:px-4 transition-all fixed top-0 z-50 ease-in-out duration-300" :class="navbarBackground">
     <div class="navbar-start">
       <!-- Responsive version -->
-      <div class="dropdown">
-        <label tabindex="0" class="btn btn-ghost swap swap-rotate lg:hidden">
-          <input type="checkbox" />
+      <div class="relative">
+        <label class="btn btn-ghost swap swap-rotate lg:hidden">
+          <input type="checkbox" @click="toggleNav"/>
           <!-- Hamburger Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 swap-off fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 swap-off fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           <!-- Close Icon -->
           <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
         </label>
-        <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-64">
+        <ul class="flex flex-col gap-4 mt-3 p-6 shadow bg-base-300 rounded-box w-64 absolute transition-all duration-500 text-lg font-normal top-10"
+          :class="{ 'inset-x-0': navActive, '-left-96': !navActive }">
           <li class="text-secondary"><RouterLink to="/">Home</RouterLink></li>
           <li><RouterLink to="/discover">Discover</RouterLink></li>
           <li><RouterLink to="/favorite">Favorite</RouterLink></li>
@@ -43,7 +49,7 @@ onMounted(() => {
         </ul>
       </div>
       <!-- END -->
-      <RouterLink to="/" class="btn btn-ghost normal-case text-xl text-secondary">daisyUI</RouterLink>
+      <RouterLink to="/" class="btn btn-ghost normal-case text-xl text-secondary hidden md:flex">daisyUI</RouterLink>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0">
@@ -56,14 +62,14 @@ onMounted(() => {
     <div class="navbar-end ml-8">
       <div class="form-control">
         <div class="input-group" @click="showDialog = !showDialog">
-          <input type="text" placeholder="Search…" class="input input-bordered input-md w-2/4 cursor-pointer" readonly/>
+          <input type="text" placeholder="Search…" class="input input-bordered input-md w-3/4 md:w-1/2 cursor-pointer" readonly/>
           <button class="btn btn-square">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </button>
         </div>
       </div>
     </div>
-    <Modal v-if="showDialog" @showDialog="handleModal"></Modal>
+    <SearchModal v-if="showDialog" @showDialog="handleModal"></SearchModal>
   </nav>
 </header>
 </template>
