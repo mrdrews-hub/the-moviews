@@ -38,7 +38,7 @@ const navigate = () => {
 </script>
 
 <template>
-<div class="main-card max-w-[300px] max-h-[450px] relative overflow-hidden group rounded-md shadow-md cursor-pointer" @click="navigate">
+<div class="main-card max-w-[300px] h-[440px] max-h-[450px] relative overflow-hidden group rounded-md shadow-md cursor-pointer" @click="navigate">
     <div class="poster relative overflow-hidden">
         <img :data-src="`https://image.tmdb.org/t/p/w300/${props.poster}`" :alt="props.title" class="w-full min-h-[435px] lazyload" v-if="props.poster !== null">
         <img src="/src/assets/image/broken-image.png" :alt="props.title" class="w-full h-full object-cover" v-else>

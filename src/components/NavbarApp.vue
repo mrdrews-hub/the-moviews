@@ -1,11 +1,18 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { onMounted, onBeforeMount, ref } from 'vue'
+import Modal from './Modal.vue';
 
 const navbarBackground = ref('bg-transparent')
+const showDialog = ref(false)
+
+const handleModal = (val) => {
+  showDialog.value = val
+}
 const scrollEventHandler = (event) => {
     if (window.scrollY > 200) {
         navbarBackground.value = 'bg-base-300'
+        window.scroll({  })
     } else {
         navbarBackground.value = 'bg-transparent'
     }
@@ -29,9 +36,10 @@ onMounted(() => {
           <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
         </label>
         <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-64">
-          <li><a>Home</a></li>
-          <li><a>Favorit</a></li>
-          <li><a>About</a></li>
+          <li class="text-secondary"><RouterLink to="/">Home</RouterLink></li>
+          <li><RouterLink to="/discover">Discover</RouterLink></li>
+          <li><RouterLink to="/favorite">Favorite</RouterLink></li>
+          <li><RouterLink to="/">About</RouterLink></li>
         </ul>
       </div>
       <!-- END -->
@@ -47,14 +55,15 @@ onMounted(() => {
     </div>
     <div class="navbar-end ml-8">
       <div class="form-control">
-        <div class="input-group">
-          <input type="text" placeholder="Search…" class="input input-bordered input-md w-2/4" />
+        <div class="input-group" @click="showDialog = !showDialog">
+          <input type="text" placeholder="Search…" class="input input-bordered input-md w-2/4 cursor-pointer" readonly/>
           <button class="btn btn-square">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </button>
         </div>
       </div>
     </div>
+    <Modal v-if="showDialog" @showDialog="handleModal"></Modal>
   </nav>
 </header>
 </template>
