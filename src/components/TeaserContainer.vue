@@ -1,14 +1,14 @@
 <script setup>
 import axios from 'axios';
-import TeaserVideo from './TeaserVideo.vue'
 import { ref, watchEffect } from 'vue';
+import { useRoute } from 'vue-router';
+import TeaserVideo from './TeaserVideo.vue'
 
 const props = defineProps({
     movieId: Number
 })
-
+const route = useRoute()
 const teasers = ref([])
-
 const fetchTeasers = async () => {
     try {
         const result = (await axios.get(`movie/${props.movieId}/videos`)).data.results

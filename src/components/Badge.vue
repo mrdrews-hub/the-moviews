@@ -25,11 +25,11 @@ const fetchMovieGenre = async () => {
 }
 
 
-onMounted(() => {
-  fetchMovieGenre()
-})
+// onMounted(() => {
+//   fetchMovieGenre()
+// })
 </script>
 
 <template>
-    <div class="badge badge-accent badge-outline truncate w-max">{{ genre }}</div>
+    <div class="badge badge-accent badge-outline truncate w-max">{{ props.text }}</div>
 </template>

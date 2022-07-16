@@ -55,32 +55,6 @@ onBeforeMount(() => {
             :genres="movie.genre_ids"
             :backdrop="movie.backdrop_path"
         />
-        <!-- <Swiper
-            :slidesPerView="7"
-            :spaceBetween="20"
-            :freeMode="true"
-            :effect="'coverflow'"
-            :pagination="{
-                clickable: true
-            }"
-            :modules="modules"
-            class="pb-6"
-            >
-                <template v-if="fetching">
-                    <swiper-slide v-for="n in 8"><SkeletonCard /></swiper-slide>
-                </template>
-                <template v-else>
-                    <swiper-slide v-for="movie in movies" :key="movie.id">
-                        <MovieCard
-                            :id="movie.id"
-                            :title="movie.title"
-                            :desc="movie.overview"
-                            :poster="movie.poster_path"
-                            :isFetching="fetching"
-                        />
-                    </swiper-slide>
-                </template>
-        </Swiper> -->
     </div>
 </section>
 </template>

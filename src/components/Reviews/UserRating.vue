@@ -2,8 +2,6 @@
 const props = defineProps({
     rating: Number
 })
-
-console.log(props.rating);
 </script>
 
 <template>

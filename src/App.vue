@@ -17,19 +17,14 @@ onMounted(() => {
 <template>
 <!-- <GuestLayout>
 </GuestLayout> -->
-    <template v-if="route.name !== 'NotFound'">
-        <NavbarApp />
-        <BacktoTop />
-          <router-view v-slot="{ Component }">
-            <transition name="bounce">
-              <component :is="Component" />
-            </transition>
-          </router-view>
-        <FooterApp />
-    </template>
-    <template v-else>
-        <RouterView />
-    </template>
+  <NavbarApp />
+  <!-- <BacktoTop /> -->
+    <router-view v-slot="{ Component }">
+      <transition name="bounce">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  <FooterApp />
 </template>
 
 <style>

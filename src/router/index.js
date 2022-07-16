@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, } from 'vue-router'
+import ReviewSection from '../components/ReviewSection.vue'
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -10,8 +11,17 @@ export const router = createRouter({
         },
         {
             path: '/detail/:id',
-            name: 'detail',
-            component: () => import('../pages/DetailMovie.vue')
+            component: () => import('../pages/DetailMovie.vue'),
+            // children: [
+            //     {
+            //         path: '',
+            //         component: '../pages/MediaMovie.vue'
+            //     },
+            //     {
+            //         path: 'video',
+            //         component: () => import('../components/TeaserContainer.vue')
+            //     }
+            // ]
         },
         {
             path: '/discover',

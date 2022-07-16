@@ -9,7 +9,6 @@ const page = ref(1)
 const fetching = ref(false)
 const movieList = ref([])
 const infiniteScroll = () => {
-    console.log(document.body.scrollHeight);
     if(window.scrollY + window.innerHeight >= document.body.scrollHeight - 450) {
         page.value += 1
     }

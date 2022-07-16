@@ -2,7 +2,8 @@
 import 'lazysizes'
 import 'lazysizes/plugins/parent-fit/ls.parent-fit'
 
-import { onMounted, ref } from 'vue';
+import axios from 'axios';
+import { onBeforeMount, ref } from 'vue';
 import { useRouter } from 'vue-router'
 import { generateGenreFromID } from '../utils/GetMovieGenre'
 import Badge from './Badge.vue';
@@ -19,21 +20,22 @@ const props = defineProps({
     isAdult: Boolean
 })
 
-// const genres = ref([])
-// const fetchMovieGenre = async () => {
-//     try {
-//         const result = (await axios.get(`https://api.themoviedb.org/3/genre/movie/list`)).data.genres
-//         genres.value = generateGenreFromID(result, props.genre_ids)
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-// onMounted(() => {
-//     fetchMovieGenre()
-// })
+const genres = ref([])
+const fetchMovieGenre = async () => {
+    try {
+        const result = (await axios.get(`https://api.themoviedb.org/3/genre/movie/list`)).data.genres
+        genres.value = generateGenreFromID(result, props.genre_ids)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+onBeforeMount(() => {
+    fetchMovieGenre()
+})
 
 const navigate = () => {
-    router.push({ name: 'detail', params: { id: props.id }})
+    router.push({ path:`detail/${props.id}`})
 }
 </script>
 
@@ -50,9 +52,7 @@ const navigate = () => {
             <span class="font-semibold">{{ Math.round(props.rating) }} / 10</span>
         </div>
         <div class="tags flex gap-x-2 mb-3 w-96">
-            <Suspense>
-                <Badge v-for="genres in props.genre_ids" :genre-id="genres" />
-            </Suspense>
+            <Badge v-for="genre in genres" :text="genre.name" />
         </div>
         <div class="description">
             {{ props.overview }}

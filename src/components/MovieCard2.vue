@@ -30,14 +30,13 @@ onMounted(() => {
   fetchMovieGenre()
 })
 
-// console.log(props.genres);
 
 const router = useRouter()
 
 const navigate = () => {
-    router.push({ name: 'detail', params: { id: props.id }})
+    window.scrollTo({ top: 0 })
+    router.push({ path: `/detail/${props.id}`, params: { id: props.id } })
 }
-
 </script>
 
 <template>
@@ -48,9 +47,9 @@ const navigate = () => {
   </div>
   <div class="pt-3 pb-3 pr-3 flex flex-col gap-2 basis-4/5">
     <h2 class="title text-lg md:text-xl font-bold">{{props.title}}</h2>
-    <small>{{ props.release }}</small>
+    <small class="-mt-2 text-2xs italic">{{ props.release }}</small>
     <div class="genre flex flex-wrap gap-1">
-      <Badge v-for="genre in props.genres" :genre-id="genre"/>
+      <Badge v-for="genre in genres" :text="genre.name"/>
     </div>
   </div>
 </div>

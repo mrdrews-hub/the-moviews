@@ -1,13 +1,15 @@
 <script setup>
-import { useRoute } from 'vue-router';
 import axios from 'axios'
-import { onMounted, ref, watchEffect } from 'vue';
+import { useRoute } from 'vue-router';
+import { onMounted, onUnmounted, ref, watchEffect } from 'vue';
 import TrinitySpinner from '../components/Loading/TrinitySpinner.vue';
 import MovieProfile from '../components/MovieProfile/MovieProfile.vue';
 import ReviewSection from '../components/ReviewSection.vue';
 import SimiliarMovies from '../components/SimiliarMovies.vue';
 import TeaserContainer from '../components/TeaserContainer.vue';
-import NavigationCard from '../components/NavigationCard/NavigationCard.vue';
+import TabItem from '../components/Tabs/TabItem.vue';
+import Tabs from '../components/Tabs/Tabs.vue';
+import PictureContainer from '../components/PictureContainer.vue';
 
 const route = useRoute()
 const details = ref()
@@ -65,11 +67,18 @@ watchEffect(fetchImages)
             :isRelease="details.status"
         />
         <div class="flex flex-col md:flex-row">
-            <!-- <TeaserContainer :movieId="details.id" class="basis-4/5"/> -->
-            <!-- <ReviewSection :id="details.id" class="basis-4/5"/> -->
-            <!-- <component :is="TeaserContainer" class="basis-4/5" :movieId="details.id"></component> -->
-            <NavigationCard class="basis-4/5" :movieId="details.id"/>
-            <SimiliarMovies :movieId="details.id" class="mt-4 px-3 md:mt-0 md:px-0"/>
+        <Tabs class="basis-4/5">
+            <TabItem name="Reviews" selected>
+                <ReviewSection :movieId="details.id"/>
+            </TabItem>
+            <TabItem name="Videos">
+                <TeaserContainer :movieId="details.id" />
+            </TabItem>
+            <TabItem name="Pictures">
+                <PictureContainer :movieId="details.id" />
+            </TabItem>
+        </Tabs>
+            <SimiliarMovies :movieId="details.id" class="mt-4 px-3 md:mt-0 md:px-0 basis-1/4"/>
         </div>
     </div>
 </div>
@@ -79,5 +88,14 @@ watchEffect(fetchImages)
 .movie__background-gradient {
     background: linear-gradient(90deg, #2a303c 0%, rgba(35, 46, 46, 0.1) 16.15%, rgba(35, 46, 46, 0.1) 80.21%, #2a303c 100%), linear-gradient(180deg, rgb(39, 43, 48) 0%, rgba(0, 0, 0, 0.58) 33.85%, #2a303c 100%);
     height: 101%;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

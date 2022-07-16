@@ -45,7 +45,7 @@ onMounted(() => {
           <li class="text-secondary"><RouterLink to="/">Home</RouterLink></li>
           <li><RouterLink to="/discover">Discover</RouterLink></li>
           <li><RouterLink to="/favorite">Favorite</RouterLink></li>
-          <li><RouterLink to="/">About</RouterLink></li>
+          <li><RouterLink to="/detail/718789/video">About</RouterLink></li>
         </ul>
       </div>
       <!-- END -->
@@ -56,7 +56,7 @@ onMounted(() => {
         <li class="text-secondary"><RouterLink to="/">Home</RouterLink></li>
         <li><RouterLink to="/discover">Discover</RouterLink></li>
         <li><RouterLink to="/favorite">Favorite</RouterLink></li>
-        <li><RouterLink to="/">About</RouterLink></li>
+        <li><RouterLink to="/detail/718789/video">About</RouterLink></li>
       </ul>
     </div>
     <div class="navbar-end ml-8">

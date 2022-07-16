@@ -1,13 +1,14 @@
 <script setup>
 import axios from 'axios'
-import { reactive, ref, watchEffect } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useRoute } from 'vue-router';
 import ReviewsCard from './Reviews/ReviewsCard.vue'
-
-const reviews = ref([])
 
 const props = defineProps({
     movieId: Number
 })
+const route = useRoute()
+const reviews = ref([])
 
 const fetchReviews = async () => {
     try {
@@ -24,7 +25,6 @@ watchEffect(fetchReviews)
 
 <template>
 <div class="user-review px-4" v-if="reviews">
-    <h2 class="text-2xl mb-4">Reviews</h2>
     <div class="list-review flex flex-col gap-y-8" v-if="reviews.length > 0">
         <ReviewsCard v-for="review in reviews" :key="review.id"
             :username="review.author_details.username"
