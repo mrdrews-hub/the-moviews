@@ -32,7 +32,7 @@ watchEffect(fetchReviews)
             :createdAt="review.created_at"
             :content="review.content"
             :rating="review.author_details.rating"
-            class="shadow-md shadow-slate-700"
+            class="shadow-md shadow-slate-700 max-w-5xl"
         />
     </div>
     <div class="text-2xl text-center" v-else>

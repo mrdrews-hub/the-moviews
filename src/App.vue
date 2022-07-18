@@ -6,11 +6,7 @@ import BacktoTop from './components/BacktoTop.vue';
 import GuestLayout from './layouts/GuestLayout.vue';
 import { onMounted } from 'vue';
 
-const route = useRoute()
 
-onMounted(() => {
-    console.log(route.name);
-})
 </script>
 
 <!-- Refactor this using layouts system -->
@@ -18,12 +14,12 @@ onMounted(() => {
 <!-- <GuestLayout>
 </GuestLayout> -->
   <NavbarApp />
-  <!-- <BacktoTop /> -->
     <router-view v-slot="{ Component }">
       <transition name="bounce">
         <component :is="Component" />
       </transition>
     </router-view>
+    <BacktoTop />
   <FooterApp />
 </template>
 

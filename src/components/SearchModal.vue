@@ -4,6 +4,7 @@ import axios from 'axios'
 import 'lazysizes'
 import 'lazysizes/plugins/parent-fit/ls.parent-fit'
 import { useRouter } from 'vue-router';
+import LoadingCircle from './Loading/LoadingCircle.vue';
 
 const router = useRouter()
 const emit = defineEmits(['showDialog'])
@@ -12,30 +13,32 @@ const modal = ref(null)
 const input = ref(null)
 const keyword = ref('')
 const searchResult = ref([])
+const fetching = ref(false)
 
 watch(keyword, async (newValue, oldValue) => {
     if(newValue.length > 0) {
+        fetching.value = true
         try {
             const result = (await axios.get(`search/movie?query=${keyword.value}`)).data.results
             searchResult.value = result.slice(0,10)
             console.log(searchResult.value);
         } catch (error) {
             console.log(error.toString());   
+        } finally {
+            fetching.value = false
         }
     }
 }, { flush: 'post' })
 const navigate = (id) => {
+    router.push({ path: `detail/${id}`, params: { id: id }})
     emit('showDialog', false)
-    router.push({ name: 'detail', params: { id: id }})
 }
 onMounted(() => {
-    console.log('modal Mounted!');
     input.value.focus()
     document.body.classList.add('overflow-hidden')
 })
 
 onUnmounted(() => {
-    console.log('modal unMounted!');
     document.body.classList.remove('overflow-hidden')
 })
 </script>
@@ -48,9 +51,9 @@ onUnmounted(() => {
                     <input type="text" placeholder="Type here" class="input input-bordered pl-10 w-full" ref="input" v-model.lazy="keyword"/>
                 </div>
                 <div class="search-result h-4/6 md:h-5/6 border-t border-b overflow-x-hidden pb-3">
-                    {{ keyword }}
-                    <template v-if="searchResult.length > 0">
-                        <div class="flex bg-gray-700 shadow-xl my-4" v-for="movie in searchResult" @click="navigate(movie.id)">
+                    <LoadingCircle v-if="fetching" class="mx-auto mt-16"/>
+                    <template v-for="movie in searchResult">
+                        <div class="flex bg-gray-700 shadow-xl my-4 cursor-pointer" v-if="movie.id" @click="navigate(movie.id)">
                             <figure class="basis-auto">
                                 <img :src="`https://image.tmdb.org/t/p/w300/${movie.poster_path}`" :alt="movie.title" class="w-24" v-if="movie.poster_path !== null" />
                                 <img data-src="/src/assets/image/broken-image.png" :alt="movie.title" class="w-24 h-full object-cover lazyload" v-else />
@@ -60,9 +63,9 @@ onUnmounted(() => {
                                 <p class="description">{{ movie.overview }}</p>
                             </div>
                         </div>
-                        <a href="#" class="text-center mb-4 text-sky-500">See more</a>
+                        <h2 class="text-center mt-12" v-else>No result ...</h2>
                     </template>
-                    <h2 class="text-center mt-12" v-else>No result ...</h2>
+                    <a href="#" class="text-center mb-4 text-sky-500" v-if="searchResult.length > 0">See more</a>
                 </div>
                 <div class="modal-footer py-3 text-right mr-3">
                     <button class="btn btn-error btn-sm rounded-lg" @click="$emit('showDialog', false)"> Close</button>

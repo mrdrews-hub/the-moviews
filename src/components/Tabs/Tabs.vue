@@ -34,8 +34,6 @@
       :class="{'tab-active': i === state.selectedIndex}"
       >{{ link.props.name }}</a> 
   </nav>
-  <article class="tab-content">
     <slot></slot>
-  </article>
 </section>
 </template>

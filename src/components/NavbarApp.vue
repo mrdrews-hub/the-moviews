@@ -40,23 +40,23 @@ onMounted(() => {
           <!-- Close Icon -->
           <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
         </label>
-        <ul class="flex flex-col gap-4 mt-3 p-6 shadow bg-base-300 rounded-box w-64 absolute transition-all duration-500 text-lg font-normal top-10"
+        <ul class="menu mt-3 shadow bg-base-300 rounded-box w-64 absolute transition-all duration-500 text-lg font-normal top-10 py-2"
           :class="{ 'inset-x-0': navActive, '-left-96': !navActive }">
-          <li class="text-secondary"><RouterLink to="/">Home</RouterLink></li>
-          <li><RouterLink to="/discover">Discover</RouterLink></li>
-          <li><RouterLink to="/favorite">Favorite</RouterLink></li>
-          <li><RouterLink to="/detail/718789/video">About</RouterLink></li>
+          <li class="text-secondary"><router-link to="/">Home</router-link></li>
+          <li><router-link to="/discover">Discover</router-link></li>
+          <li><router-link to="/favorite">Favorite</router-link></li>
+          <li><router-link to="/detail/718789/video">About</router-link></li>
         </ul>
       </div>
       <!-- END -->
-      <RouterLink to="/" class="btn btn-ghost normal-case text-xl text-secondary hidden md:flex">daisyUI</RouterLink>
+      <router-link to="/" class="btn btn-ghost normal-case text-xl text-secondary hidden md:flex">daisyUI</router-link>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0">
-        <li class="text-secondary"><RouterLink to="/">Home</RouterLink></li>
-        <li><RouterLink to="/discover">Discover</RouterLink></li>
-        <li><RouterLink to="/favorite">Favorite</RouterLink></li>
-        <li><RouterLink to="/detail/718789/video">About</RouterLink></li>
+        <li class="text-secondary"><router-link to="/">Home</router-link></li>
+        <li><router-link to="/discover">Discover</router-link></li>
+        <li><router-link to="/favorite">Favorite</router-link></li>
+        <li><router-link to="/detail/718789/video">About</router-link></li>
       </ul>
     </div>
     <div class="navbar-end ml-8">

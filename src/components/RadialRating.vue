@@ -31,7 +31,7 @@ const textSize = computed(() => {
         '--thickness': 1 + 'rem'
         }"
 >
-<p :class="textSize">{{ rating }}%</p>
+<p :class="textSize">{{ Math.round(rating) }}%</p>
 <p>of {{ props.vote_count }}</p>
 <p>User Rating</p>
 </div>

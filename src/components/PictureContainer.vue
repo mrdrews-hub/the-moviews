@@ -36,34 +36,58 @@ const modules = [FreeMode,Navigation,Thumbs]
 watchEffect(fetchTeasers)
 </script>
 <template>
-<section id="picture">
+<section id="picture" class="relative">
   <Swiper
       :style="{
         '--swiper-navigation-color': '#fff',
         '--swiper-pagination-color': '#fff',
       }"
+      :freeMode="true"
+      :slidesPerView="1"
       :spaceBetween="10"
       :navigation="true"
       :thumbs="{ swiper: thumbsSwiper }"
       :modules="modules"
-      class="mySwiper2"
+      class="py-3 lg:w-[1000px]"
   >
-    <swiper-slide v-for="image in images">
-      <img :src="`https://image.tmdb.org/t/p/original/${image.file_path}`" alt="" class="w-full lg:w-80">
+    <swiper-slide v-for="image in images" class="max-w-md">
+      <img :src="`https://image.tmdb.org/t/p/original/${image.file_path}`" alt="" class="">
     </swiper-slide>
   </Swiper>
   <Swiper
       @swiper="setThumbsSwiper"
       :spaceBetween="10"
-      :slidesPerView="4"
+      :slidesPerView="7"
       :freeMode="true"
       :watchSlidesProgress="true"
       :modules="modules"
-      class="mt-4"
+      class="mt-4 lg:w-[600px]"
   >
     <swiper-slide v-for="image in images">
-      <img :src="`https://image.tmdb.org/t/p/original/${image.file_path}`" alt="" class="w-72">
+      <img :src="`https://image.tmdb.org/t/p/original/${image.file_path}`" alt="" class="">
     </swiper-slide>
   </Swiper>
 </section>
 </template>
+
+<style scoped>
+swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+</style>

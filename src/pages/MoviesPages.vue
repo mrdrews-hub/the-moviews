@@ -35,7 +35,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div class="container min-h-screen relative mt-20 mx-auto">
+<div class="min-h-screen relative mt-20 mx-auto ">
     <h2 class="text-center">Movies Discover</h2>
     <div class="movie-list flex justify-center flex-wrap gap-2">
             <MovieCard

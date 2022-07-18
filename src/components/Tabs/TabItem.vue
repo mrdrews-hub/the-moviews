@@ -30,7 +30,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div class="item" v-if="isActive">
+  <article class="item" v-if="isActive">
     <slot></slot>
-  </div>
+  </article>
 </template>

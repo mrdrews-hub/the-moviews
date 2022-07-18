@@ -15,7 +15,6 @@ const route = useRoute()
 const details = ref()
 const backdropImages = ref([])
 const loading = ref(false)
-
 const fetchDetails = async () => {
     try {
         loading.value = true
@@ -40,6 +39,9 @@ const fetchImages = async () => {
 onMounted(() => {
     window.scrollTo({ top: 0 })
 })
+onUnmounted(() => {
+    console.log('unMount');
+})
 
 watchEffect(fetchDetails)
 watchEffect(fetchImages)
@@ -56,7 +58,6 @@ watchEffect(fetchImages)
         <MovieProfile
             :poster="details.poster_path"
             :title="details.title"
-            :budget="details.budget"
             :popularity="details.popularity"
             :vote_average="details.vote_average"
             :vote_count="details.vote_count"
@@ -65,6 +66,7 @@ watchEffect(fetchImages)
             :overview="details.overview"
             :release="details.release_date"
             :isRelease="details.status"
+            :id="details.id"
         />
         <div class="flex flex-col md:flex-row">
         <Tabs class="basis-4/5">
@@ -78,7 +80,7 @@ watchEffect(fetchImages)
                 <PictureContainer :movieId="details.id" />
             </TabItem>
         </Tabs>
-            <SimiliarMovies :movieId="details.id" class="mt-4 px-3 md:mt-0 md:px-0 basis-1/4"/>
+            <SimiliarMovies :movieId="details.id" class="mt-4 px-3 md:mt-0 md:px-0 basis-1/5"/>
         </div>
     </div>
 </div>
