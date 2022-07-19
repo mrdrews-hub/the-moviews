@@ -6,9 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import MovieCard from "./MovieCard.vue";
-import MovieCard2 from "./MovieCard2.vue";
 import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
 import SkeletonCard from './SkeletonCard.vue';
 
 const modules = [Pagination, FreeMode, Lazy]

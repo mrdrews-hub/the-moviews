@@ -1,6 +1,6 @@
 <script setup>
-import HeroImg from '@/assets/image/hero-banner.jpg'
-
+import HeroImg from '@/assets/image/hero-banner-min.jpg'
+import HeroImgMobile from '@/assets/image/hero-banner-mobile.jpg'
 </script>
 
 <template>

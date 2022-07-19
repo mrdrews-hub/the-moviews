@@ -1,10 +1,16 @@
 <script setup>
-import HeroApp from '@/components/HeroApp.vue'
-import StatsContent from '@/components/StatsContent.vue';
-import PopularMovie from '@/components/PopularMovie.vue';
-import NowPlaying from '../components/NowPlaying.vue';
-import TopratedMovie from '../components/TopRated/TopratedMovie.vue';
+import { defineAsyncComponent } from 'vue';
+// import HeroApp from '../components/HeroApp.vue'
+// import StatsContent from '@/components/StatsContent.vue';
+// import PopularMovie from '@/components/PopularMovie.vue';
+// import NowPlaying from '../components/NowPlaying.vue';
+// import TopratedMovie from '../components/TopRated/TopratedMovie.vue';
 
+const HeroApp = defineAsyncComponent(() => import('../components/HeroApp.vue'))
+const StatsContent = defineAsyncComponent(() => import('../components/StatsContent.vue'))
+const PopularMovie = defineAsyncComponent(() => import('../components/PopularMovie.vue'))
+const NowPlaying = defineAsyncComponent(() => import('../components/NowPlaying.vue'))
+const TopratedMovie = defineAsyncComponent(() => import('../components/TopRated/TopratedMovie.vue'))
 </script>
 
 <template>

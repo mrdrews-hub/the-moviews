@@ -5,7 +5,6 @@ import AOS from 'aos'
 import App from './App.vue'
 import { api } from './config/api'
 import './assets/index.css'
-import 'feather-icons/dist/feather.min.js'
 import { router } from './router'
 import 'aos/dist/aos.css'
 
