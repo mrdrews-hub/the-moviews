@@ -14,7 +14,6 @@ const modules = [Pagination, FreeMode, Navigation]
 const movies = ref([])
 const fetching = ref(false)
 
-
 const fetchPopularMovie = async () => {
   try {
     fetching.value = true

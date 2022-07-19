@@ -6,7 +6,7 @@ import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), Inspect(), chunkSplitPlugin()],
+  plugins: [vue(), Inspect(), splitVendorChunkPlugin()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

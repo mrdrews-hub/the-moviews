@@ -14,11 +14,7 @@ import { onMounted } from 'vue';
 <!-- <GuestLayout>
 </GuestLayout> -->
   <NavbarApp />
-    <router-view v-slot="{ Component }">
-      <transition name="bounce" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
+  <RouterView/>
     <BacktoTop />
   <FooterApp />
 </template>

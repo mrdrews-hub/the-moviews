@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useRoute } from 'vue-router';
 import { onMounted, onUnmounted, ref, watchEffect, defineAsyncComponent } from 'vue';
 import TrinitySpinner from '../components/Loading/TrinitySpinner.vue';
+
 const MovieProfile = defineAsyncComponent(() =>import('../components/MovieProfile/MovieProfile.vue'))
 const ReviewSection = defineAsyncComponent(() => import('../components/ReviewSection.vue'))
 const SimiliarMovies = defineAsyncComponent(() => import('../components/SimiliarMovies.vue'))
@@ -37,6 +38,7 @@ const fetchImages = async () => {
     }
 }
 onMounted(() => {
+    console.log('mounted');
     window.scrollTo({ top: 0 })
 })
 onUnmounted(() => {

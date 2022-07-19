@@ -2,8 +2,8 @@
 import axios from 'axios';
 import { onMounted, ref, watchEffect, defineAsyncComponent } from 'vue';
 
-const MovieCard =  defineAsyncComponent(() => import('../components/MovieCard.vue'))
 import LoadingCircle from '../components/Loading/LoadingCircle.vue'
+const MovieCard =  defineAsyncComponent(() => import('../components/MovieCard.vue'))
 
 const page = ref(1)
 const fetching = ref(false)
