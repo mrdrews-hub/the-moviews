@@ -4,7 +4,7 @@ import HeroImgMobile from '@/assets/image/hero-banner-mobile.jpg'
 </script>
 
 <template>
-<div class="hero min-h-screen bg-cover bg-top bg-fixed" :style="{ backgroundImage: `url(${HeroImg})` }">
+<div class="hero min-h-screen bg-cover bg-top bg-fixed" :style="{ backgroundImage: `url(${HeroImgMobile})` }">
   <div class="hero-overlay bg-opacity-70"></div>
   <div class="hero-content text-center text-neutral-content">
     <div class="max-w-md">

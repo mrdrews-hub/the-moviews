@@ -1,15 +1,15 @@
 <script setup>
 import axios from 'axios'
 import { useRoute } from 'vue-router';
-import { onMounted, onUnmounted, ref, watchEffect } from 'vue';
+import { onMounted, onUnmounted, ref, watchEffect, defineAsyncComponent } from 'vue';
 import TrinitySpinner from '../components/Loading/TrinitySpinner.vue';
-import MovieProfile from '../components/MovieProfile/MovieProfile.vue';
-import ReviewSection from '../components/ReviewSection.vue';
-import SimiliarMovies from '../components/SimiliarMovies.vue';
-import TeaserContainer from '../components/TeaserContainer.vue';
-import TabItem from '../components/Tabs/TabItem.vue';
-import Tabs from '../components/Tabs/Tabs.vue';
-import PictureContainer from '../components/PictureContainer.vue';
+const MovieProfile = defineAsyncComponent(() =>import('../components/MovieProfile/MovieProfile.vue'))
+const ReviewSection = defineAsyncComponent(() => import('../components/ReviewSection.vue'))
+const SimiliarMovies = defineAsyncComponent(() => import('../components/SimiliarMovies.vue'))
+const TeaserContainer = defineAsyncComponent(() => import('../components/TeaserContainer.vue'))
+const TabItem = defineAsyncComponent(() => import('../components/Tabs/TabItem.vue'))
+const Tabs = defineAsyncComponent(() => import('../components/Tabs/Tabs.vue'))
+const PictureContainer = defineAsyncComponent(() => import('../components/PictureContainer.vue'))
 
 const route = useRoute()
 const details = ref()

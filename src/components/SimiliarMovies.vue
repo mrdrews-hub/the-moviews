@@ -1,11 +1,7 @@
 <script setup>
 import axios from 'axios';
-import { onBeforeMount, ref, watchEffect } from 'vue';
+import { onBeforeMount, ref, } from 'vue';
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/effect-coverflow";
-import SkeletonCard from './SkeletonCard.vue';
 import MovieCard2 from './MovieCard2.vue'
 
 const props = defineProps({
