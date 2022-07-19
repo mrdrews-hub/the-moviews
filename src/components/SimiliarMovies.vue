@@ -1,21 +1,17 @@
 <script setup>
 import axios from 'axios';
 import { onBeforeMount, ref, watchEffect } from 'vue';
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Pagination, FreeMode } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import SkeletonCard from './SkeletonCard.vue';
 import MovieCard2 from './MovieCard2.vue'
-import MovieCard from './MovieCard.vue';
 
 const props = defineProps({
     movieId: Number
 })
 
-const modules = [Pagination, FreeMode]
 const movies = ref([]) //Maks 10 Movie
 const movieGenre = ref([])
 const loading = ref(false)
@@ -37,7 +33,6 @@ onBeforeMount(() => {
     fetchSimiliarMovie()
 })
 
-// watchEffect(fetchSimiliarMovie)
 </script>
 
 <template>

@@ -9,11 +9,6 @@ const props = defineProps({
   favorited: Boolean
 })
 
-// const favorited = ref([])
-
-// onMounted(() => {
-//   favorited.value = getItem(props.id)
-// })
 </script>
 <template>
   <button class="btn btn-md w-max text-white rounded-lg" @click="emit('onRemoveFavorite')" v-if="props.favorited">

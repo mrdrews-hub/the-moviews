@@ -26,7 +26,7 @@ const fetchData = async () => {
     }
 }
 
-watchEffect(fetchData)
+watchEffect(fetchData);
 
 onMounted(() => {
     window.scrollTo({ top: 0 })

@@ -33,7 +33,7 @@ onMounted(() => {
 <template>
 <div class="container mx-auto rounded-xl h-max">
     <div class="text-3xl font-bold basis-1 text-center">
-        <h1>ON CINEMA</h1>
+        <h1 data-aos="fade-in">ON CINEMA</h1>
     </div>
     <hr class="my-2 border border-white/20 w-[90%] mx-auto">
       <Swiper

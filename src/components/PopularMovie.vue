@@ -33,7 +33,7 @@ onMounted(() => {
 <template>
 <div class="container mx-auto">
     <div class="text-3xl font-bold basis-1">
-        <h1 class="text-center">Trending This Week</h1>
+        <h1 class="text-center" data-aos="fade-in">Trending This Week</h1>
     </div>
     <hr class="my-2 border border-white/20 w-[90%] mx-auto">
       <Swiper

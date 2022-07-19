@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { onMounted, onBeforeMount, ref } from 'vue'
-import SearchModal from './SearchModal.vue';
+import SearchModal from '../SearchModal.vue';
 
 const navbarBackground = ref('bg-transparent')
 const navActive = ref(false)
@@ -25,6 +25,25 @@ const scrollEventHandler = (event) => {
 onMounted(() => {
     window.addEventListener('scroll', scrollEventHandler)
 })
+
+const navs = [
+  {
+    route: '/',
+    name: 'Home',
+  },
+  {
+    route: '/discover',
+    name: 'Discover',
+  },
+  {
+    route: '/favorite',
+    name: 'Favorite',
+  },
+  {
+    route: 'https://github.com/mrdrews-hub',
+    name: 'About',
+  },
+]
 </script>
 
 <template>
@@ -42,10 +61,7 @@ onMounted(() => {
         </label>
         <ul class="menu mt-3 shadow bg-base-300 rounded-box w-64 absolute transition-all duration-500 text-lg font-normal top-10 py-2"
           :class="{ 'inset-x-0': navActive, '-left-96': !navActive }">
-          <li class="text-secondary"><router-link to="/">Home</router-link></li>
-          <li><router-link to="/discover">Discover</router-link></li>
-          <li><router-link to="/favorite">Favorite</router-link></li>
-          <li><router-link to="/detail/718789/video">About</router-link></li>
+          <li v-for="nav in navs"><router-link :to="nav.route">{{ nav.name }}</router-link></li>
         </ul>
       </div>
       <!-- END -->
@@ -53,10 +69,7 @@ onMounted(() => {
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0">
-        <li class="text-secondary"><router-link to="/">Home</router-link></li>
-        <li><router-link to="/discover">Discover</router-link></li>
-        <li><router-link to="/favorite">Favorite</router-link></li>
-        <li><router-link to="/detail/718789/video">About</router-link></li>
+        <li v-for="nav in navs"><router-link :to="nav.route">{{ nav.name }}</router-link></li>
       </ul>
     </div>
     <div class="navbar-end ml-8">

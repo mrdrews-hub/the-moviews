@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView, useRoute } from 'vue-router';
-import NavbarApp from './components/NavbarApp.vue';
+import NavbarApp from './components/Navbar/NavbarApp.vue';
 import FooterApp from './components/FooterApp.vue';
 import BacktoTop from './components/BacktoTop.vue';
 import GuestLayout from './layouts/GuestLayout.vue';
@@ -15,7 +15,7 @@ import { onMounted } from 'vue';
 </GuestLayout> -->
   <NavbarApp />
     <router-view v-slot="{ Component }">
-      <transition name="bounce">
+      <transition name="bounce" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>

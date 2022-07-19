@@ -33,7 +33,11 @@ onMounted(() => {
 <template>
 <div class="container mx-auto">
     <div class="text-3xl font-bold basis-1">
-        <h1 class="text-center">Top Rated 🌟🌟🌟</h1>
+        <h1 class="text-center" data-aos="fade-in">Top Rated 
+          <span data-aos="zoom-out" data-aos-delay="300">⭐</span>
+          <span data-aos="zoom-out" data-aos-delay="400">⭐</span>
+          <span data-aos="zoom-out" data-aos-delay="500">⭐</span>
+        </h1>
     </div>
     <hr class="my-2 border border-white/20 w-[90%] mx-auto">
       <Swiper
