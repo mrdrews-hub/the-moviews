@@ -7,7 +7,7 @@ import StatsCard from './StatsCard/StatsCard.vue';
         <h1 class="font-bold font-inter text-2xl" data-aos="fade-up">Most <span class="text-secondary">Popular</span> Web Flatform <br> For Movie <span class="text-secondary">Streaming</span></h1>
     </div>
     <div class="divider divider-horizontal"></div>
-        <div class="stats shadow flex flex-col md:flex-row">
+        <div class="stats shadow flex flex-col md:flex-row overflow-hidden">
   
             <div class="stat basis-1 w-full" data-aos="fade-right">
                 <div class="stat-figure text-secondary">

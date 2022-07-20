@@ -3,14 +3,16 @@ import axios from 'axios'
 import { useRoute } from 'vue-router';
 import { onMounted, onUnmounted, ref, watchEffect, defineAsyncComponent } from 'vue';
 import TrinitySpinner from '../components/Loading/TrinitySpinner.vue';
+import TabItem from '../components/Tabs/TabItem.vue';
+import Tabs from '../components/Tabs/Tabs.vue';
 
 const MovieProfile = defineAsyncComponent(() =>import('../components/MovieProfile/MovieProfile.vue'))
 const ReviewSection = defineAsyncComponent(() => import('../components/ReviewSection.vue'))
 const SimiliarMovies = defineAsyncComponent(() => import('../components/SimiliarMovies.vue'))
 const TeaserContainer = defineAsyncComponent(() => import('../components/TeaserContainer.vue'))
-const TabItem = defineAsyncComponent(() => import('../components/Tabs/TabItem.vue'))
-const Tabs = defineAsyncComponent(() => import('../components/Tabs/Tabs.vue'))
 const PictureContainer = defineAsyncComponent(() => import('../components/PictureContainer.vue'))
+// const TabItem = defineAsyncComponent(() => import('../components/Tabs/TabItem.vue'))
+// const Tabs = defineAsyncComponent(() => import('../components/Tabs/Tabs.vue'))
 
 const route = useRoute()
 const details = ref()
@@ -52,7 +54,7 @@ watchEffect(fetchImages)
 <template>
 <div class="min-h-screen">
     <div class="fixed top-0 movie__background w-full h-3/4 bg-left-top bg-cover -z-10" v-if="!loading"
-        :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdropImages})` }">
+        :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w780${backdropImages})` }">
         <div class="movie__background-gradient"></div>
     </div>
     <TrinitySpinner v-if="loading"/>

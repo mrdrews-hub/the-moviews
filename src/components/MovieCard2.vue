@@ -1,4 +1,6 @@
 <script setup>
+import 'lazysizes'
+import 'lazysizes/plugins/parent-fit/ls.parent-fit'
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router'
 import Badge from './Badge.vue';
@@ -43,7 +45,7 @@ const navigate = () => {
 <div class="card card-side relative bg-base-100 shadow-xl box-border group">
   <div @click="navigate" class="cursor-pointer basis-auto mr-3">
     <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-all duration-300 ease-in" ></div>
-    <img :src="`https://image.tmdb.org/t/p/w200/${props.poster}`" :alt="props.title" class="w-36 rounded-tr-lg rounded-br-lg">
+    <img :data-src="`https://image.tmdb.org/t/p/w200/${props.poster}`" data-sizes="auto" :alt="props.title" class="w-36 rounded-tr-lg rounded-br-lg lazyload">
   </div>
   <div class="pt-3 pb-3 pr-3 flex flex-col gap-2 basis-4/5">
     <h2 class="title text-lg md:text-xl font-bold">{{props.title}}</h2>
