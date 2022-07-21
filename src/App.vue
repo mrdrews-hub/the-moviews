@@ -15,7 +15,7 @@ watch(isOnline, () => {
 <!-- Refactor this using layouts system -->
 <template>
   <NavbarApp />
-  <div class="absolute bottom-0 left-0 bg-secondary/50 rounded-lg p-2" v-if="!isOnline"><h2 class="text-2xl">Offline Mode</h2> </div>
+  <div class="fixed bottom-0 left-0 bg-secondary/50 rounded-lg p-2 z-50" v-if="isOnline"><h2 class="text-2xl">Offline Mode</h2> </div>
   <RouterView/>
     <BacktoTop />
   <FooterApp />
