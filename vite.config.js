@@ -9,13 +9,30 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig({
   plugins: [
     vue(),
-    Inspect(),
     splitVendorChunkPlugin(),
     VitePWA({
       injectRegister: 'auto',
       strategies: 'generateSW',
-      devOptions: {
-        enabled: true
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        globIgnores: [
+          "**/node_modules/**/*",
+        ],
+        runtimeCaching:[
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+            handler: 'CacheFirst',
+            options: {
+              expiration: { maxEntries: 20 },
+              cacheName: 'image-assets',
+            },
+            method: 'GET'
+          }
+        ],
+        sourcemap: true,
+        clientsClaim: true,
+        skipWaiting: true
       }
     })
   ],
