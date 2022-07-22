@@ -5,7 +5,6 @@ import { Pagination, Navigation, FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "swiper/css/effect-coverflow";
 import MovieCard from "../MovieCard.vue";
 import { ref, onMounted } from 'vue';
 import SkeletonCard from '../SkeletonCard.vue';
@@ -41,28 +40,29 @@ onMounted(() => {
     </div>
     <hr class="my-2 border border-white/20 w-[90%] mx-auto">
       <Swiper
-        :slidesPerView="1"
-        :spaceBetween="1"
+        :slidesPerView="2"
+        :spaceBetween="20"
+        :free-mode="true"
         :pagination="{
           type: 'progressbar',
         }"
-        :navigation="true"
         :breakpoints="{
           '640': {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          '768': {
+            navigation: true,
             slidesPerView: 4,
             spaceBetween: 20,
           },
-          '1024': {
+          '768': {
             slidesPerView: 5,
-            spaceBetween: 14,
+            spaceBetween: 20,
+          },
+          '1024': {
+            navigation: true,
+            slidesPerView: 5,
+            spaceBetween: 40,
           },
         }"
         :modules="modules"
-        class="pb-6"
         >
         <template v-if="fetching">
           <swiper-slide v-for="n in 8"><SkeletonCard /></swiper-slide>

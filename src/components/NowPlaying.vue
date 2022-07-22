@@ -35,24 +35,29 @@ onMounted(() => {
     </div>
     <hr class="my-2 border border-white/20 w-[90%] mx-auto">
       <Swiper
-        :slidesPerView="1"
-        :spaceBetween="10"
-        :freeMode="true"
-        :modules="modules"
+        :slidesPerView="2"
+        :spaceBetween="40"
+        :free-mode="true"
+        :pagination="{
+          type: 'progressbar',
+        }"
         :breakpoints="{
           '640': {
-            slidesPerView: 2,
-            spaceBetween: 10,
+            navigation: true,
+            slidesPerView: 4,
+            spaceBetween: 20,
           },
           '768': {
-            slidesPerView: 4,
-            spaceBetween: 10,
+            slidesPerView: 5,
+            spaceBetween: 20,
           },
           '1024': {
+            navigation: true,
             slidesPerView: 5,
-            spaceBetween: 10,
+            spaceBetween: 40,
           },
         }"
+        :modules="modules"
         >
         <template v-if="fetching">
           <swiper-slide v-for="n in 8"><SkeletonCard /></swiper-slide>

@@ -17,7 +17,8 @@ const props = defineProps({
     overview: String,
     rating: Number,
     genre_ids: Array,
-    isAdult: Boolean
+    isAdult: Boolean,
+    fetching: Boolean
 })
 
 const genres = ref([])
@@ -40,18 +41,19 @@ const navigate = () => {
 </script>
 
 <template>
-<div class="main-card max-w-[300px] h-[440px] max-h-[450px] relative overflow-hidden group rounded-md shadow-md cursor-pointer" @click="navigate" data-aos="zoom-in">
-    <div class="poster relative overflow-hidden">
-        <img :data-src="`https://image.tmdb.org/t/p/w200/${props.poster}`" :alt="props.title" class="w-full min-h-[435px] lazyload" v-if="props.poster !== null">
+<div class="main-card w-[170px] md:w-[300px] h-64 md:h-[440px] md:max-h-[450px] relative overflow-hidden group shadow-md cursor-pointer" @click="navigate" data-aos="zoom-in">
+    <div class="animate-pulse bg-slate-600 w-40 md:w-[300px] h-64 md:h-[440px] max-h-[450px]" v-if="fetching"></div>
+    <div class="poster relative overflow-hidden rounded-lg" v-else>
+        <img :data-src="`https://image.tmdb.org/t/p/w200/${props.poster}`" :alt="props.title" class="w-full h-[270px] md:h-[440px] lazyload" v-if="props.poster !== null">
         <img src="/src/assets/image/broken-image.png" :alt="props.title" class="w-full h-full object-cover" v-else>
     </div>
-    <div class="details absolute p-5 w-full h-full -bottom-[310px] left-0 box-border transition-all duration-500 delay-300 z-10 group-hover:-bottom-52">
-        <h2 class="title text-2xl text-white font-semibold font-sans-narrow truncate cursor-pointer hover:text-blue-100" @click="navigate">{{ props.title }}</h2>
+    <div class="details absolute px-2 pt-9 md:p-5 w-full h-full -bottom-[146px] md:-bottom-[310px] left-0 box-border transition-all duration-500 delay-300 z-10 md:group-hover:-bottom-52 overflow-hidden">
+        <h2 class="title text-lg md:text-2xl text-white font-semibold font-sans-narrow truncate cursor-pointer hover:text-blue-100" @click="navigate">{{ props.title }}</h2>
         <div class="rating mt-2 mb-3 flex align-middle">
             <input type="radio" name="rating-2" class="mask mask-star-2 bg-yellow-500 mr-2" checked />
             <span class="font-semibold">{{ Math.round(props.rating) }} / 10</span>
         </div>
-        <div class="tags flex gap-x-2 mb-3 w-96">
+        <div class="tags hidden md:flex gap-x-2 mb-3 w-96">
             <Badge v-for="genre in genres" :text="genre.name" />
         </div>
         <div class="description">
@@ -68,7 +70,7 @@ const navigate = () => {
 .poster::before {
     content: "";
     position: absolute;
-    bottom: -230px; 
+    bottom: -160px; 
     left: 0; 
     width: 100%; 
     height: 100%; 
@@ -88,5 +90,22 @@ const navigate = () => {
     -webkit-box-orient: vertical;
     overflow: hidden;
     hyphens: auto;
+}
+@media only screen and (max-width: 640px) {
+.poster::before {
+    content: "";
+    position: absolute;
+    bottom: -90px; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: linear-gradient(0deg, #000 55%, transparent); 
+    transition: 0.5s;
+    transition-delay: .3s;
+    z-index: 1;
+}
+.description {
+    display: none;
+}
 }
 </style>
